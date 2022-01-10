@@ -1,5 +1,5 @@
 <script>
-  import { capitalize } from "./utils/string";
+  import { capitalize } from "../utils/string";
 
   export let guest;
 
