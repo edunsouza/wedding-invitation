@@ -1,14 +1,28 @@
+@font-face {
+  font-family: "LobsterTwo";
+  src: url("fonts/LobsterTwo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "AmaticSC";
+  src: url("fonts/AmaticSC-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: url("fonts/Inconsolata-Medium.ttf");
+}
+
 body {
   display: flex;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: #333;
-  font-family: "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-    "Helvetica Neue", sans-serif;
+  font-family: "AmaticSC", Arial, sans-serif;
 }
 
-*:focus-visible {
+* {
   outline: none !important;
 }
 
