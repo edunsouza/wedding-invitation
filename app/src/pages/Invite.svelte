@@ -1,9 +1,9 @@
 <script>
-  import { capitalize } from "../utils/string";
+  import { capitalize } from '../utils/string';
 
   export let guest;
 
-  const names = guest?.split("-").map(capitalize).join(" & ");
+  const names = guest?.split('-').map(capitalize).join(' & ');
 </script>
 
 <section>

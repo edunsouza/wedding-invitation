@@ -1,19 +1,24 @@
 <script>
-  import { Link } from "svelte-navigator";
-  import Header from "../components/Header.svelte";
-  import AddressMap from "../components/AddressMap.svelte";
+  import Header from '../components/Header.svelte';
+  import Menu from '../components/Menu.svelte';
+
+  import AddressMap from '../components/AddressMap.svelte';
+  import Title from '../components/Title.svelte';
+
+  const menus = [
+    { label: 'Lista de Presentes', icon: 'card_giftcard', component: Title },
+    { label: 'Confirmar Presença', icon: 'verified', component: Title },
+    { label: 'Endereço', icon: 'place', component: AddressMap },
+  ];
 </script>
 
-<section>
+<main>
   <Header />
-  <AddressMap />
-</section>
+  <Menu items={menus} />
+</main>
 
 <style lang="scss">
-  section {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  main {
+    height: 100vh;
   }
 </style>
