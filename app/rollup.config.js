@@ -6,6 +6,8 @@ import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import preprocess from 'svelte-preprocess';
 
+import config from './svelte.config.mjs';
+
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -39,7 +41,10 @@ export default {
   },
   plugins: [
     svelte({
-      preprocess: preprocess(),
+      preprocess: preprocess({
+        ...config.preprocessOptions,
+        sourceMap: !production,
+      }),
       compilerOptions: {
         // enable run-time checks when not in production
         dev: !production
