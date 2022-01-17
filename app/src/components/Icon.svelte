@@ -4,7 +4,7 @@
   export let classes = '';
 </script>
 
-<i class="i-sm material-icons-outlined {color} {classes}" on:click>
+<i class="i-sm material-icons {color} {classes}" on:click>
   {icon}
 </i>
 
