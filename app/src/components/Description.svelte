@@ -40,9 +40,10 @@
 
       &::before,
       &::after {
-        content: '-';
-        color: $secondary;
-        transform: scaleX(10);
+        content: '';
+        width: 80px;
+        height: 3px;
+        background: $secondary;
       }
 
       :global(i) {
@@ -55,7 +56,7 @@
       }
 
       aside {
-        flex: 3;
+        flex: 6;
       }
     }
   }
