@@ -6,8 +6,6 @@
 <h1 transition:transition>{value}</h1>
 
 <style lang="scss">
-  @import '../styles/variables';
-
   h1 {
     margin: 0;
     margin-top: 10px;

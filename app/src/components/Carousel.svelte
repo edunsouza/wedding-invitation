@@ -31,8 +31,6 @@
 </div>
 
 <style lang="scss">
-  @import '../styles/variables';
-
   @keyframes blink {
     10%,
     40% {
@@ -58,6 +56,7 @@
       min-width: 100%;
       max-width: 100%;
       object-fit: cover;
+      object-position: 50% 60%;
     }
 
     span {

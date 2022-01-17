@@ -12,8 +12,6 @@
 </Router>
 
 <style lang="scss">
-  @import 'styles/variables';
-
   :global(body) {
     background-color: $light;
   }

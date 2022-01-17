@@ -26,7 +26,7 @@
 <style lang="scss">
   header {
     position: relative;
-    height: 350px;
+    height: 450px;
     width: 100%;
 
     nav,

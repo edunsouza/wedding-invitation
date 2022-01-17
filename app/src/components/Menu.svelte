@@ -6,7 +6,6 @@
 
   let selected = 0;
   const setSelected = (index) => (selected = index);
-  const onAnimationEnd = () => (ended = true);
 </script>
 
 <nav>
@@ -28,8 +27,6 @@
 </article>
 
 <style lang="scss">
-  @import '../styles/variables';
-
   article {
     display: flex;
     align-items: center;
@@ -50,7 +47,7 @@
       cursor: pointer;
       user-select: none;
       font-size: 32px;
-      border-bottom: 4px dashed $primary;
+      border-top: 3px solid $dark;
 
       :global(i) {
         font-size: 42px;
