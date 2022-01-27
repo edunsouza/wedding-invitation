@@ -4,21 +4,25 @@
 
   export let items = [];
 
-  let selected = 0;
-  const setSelected = (index) => (selected = index);
+  let index = 0;
+  let selected = false;
+  const select = (i) => {
+    index = i;
+    selected = true;
+  };
 </script>
 
 <nav>
   {#each items as item, i}
-    <span on:click={() => setSelected(i)}>
+    <span on:click={() => select(i)}>
       <Subtitle value={item.label} />
       <Icon icon={item.icon} />
     </span>
   {/each}
 </nav>
 <article>
-  {#each items as item, index}
-    {#if selected === index}
+  {#each items as item, i}
+    {#if index === i && selected}
       <div>
         <svelte:component this={item.component} value={item.label} />
       </div>
@@ -47,7 +51,7 @@
       cursor: pointer;
       user-select: none;
       font-size: 32px;
-      border-top: 3px solid $dark;
+      border-top: 2px solid $dark;
 
       :global(i) {
         font-size: 42px;

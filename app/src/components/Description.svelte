@@ -1,62 +1,64 @@
 <script>
-  import Icon from './Icon.svelte';
-  import {
-    EVENT_ADDRESS,
-    EVENT_DATE_STRING,
-    EVENT_START,
-  } from '../utils/constants';
+  import Leaf from '../../public/img/leaf-2.svg';
+  import { EVENT_ADDRESS, EVENT_DATE_STRING, EVENT_START } from '../utils/constants';
+
+  const [addressLine1, addressLine2] = EVENT_ADDRESS.split('—');
 </script>
 
-<div>
-  <span>
-    <Icon icon="calendar_month" color="secondary" />
-    <aside>{EVENT_DATE_STRING}</aside>
-  </span>
-  <span>
-    <Icon icon="watch_later" color="secondary" />
-    <aside>{EVENT_START}</aside>
-  </span>
-  <span>
-    <Icon icon="place" color="secondary" />
-    <aside>{EVENT_ADDRESS}</aside>
-  </span>
-</div>
+<section>
+  <Leaf />
+  <ul>
+    <li>
+      {EVENT_DATE_STRING}
+    </li>
+    <li>
+      {EVENT_START}
+    </li>
+    <li>
+      <span>{addressLine1}</span>
+      <span>{addressLine2}</span>
+    </li>
+  </ul>
+  <Leaf />
+</section>
 
 <style lang="scss">
-  div {
+  section {
+    width: 75%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    width: 60%;
 
-    span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    :global(svg) {
+      height: auto;
+      width: 500px;
+      fill: $secondary;
+
+      &:first-child {
+        transform: rotateY(160deg);
+      }
+    }
+
+    ul {
+      list-style: none;
       width: 100%;
-      margin: 0;
-      color: $dark;
-      font-size: 24px;
+      padding: 0;
+      margin: 10px 0;
 
-      &::before,
-      &::after {
-        content: '';
-        width: 80px;
-        height: 3px;
-        background: $secondary;
-      }
-
-      :global(i) {
+      li {
         display: flex;
+        align-items: center;
         justify-content: center;
-        flex: 1;
-        margin-right: 10px;
-        font-size: 30px;
-        cursor: inherit;
-      }
+        width: 100%;
+        margin: 0;
+        color: $dark;
+        font-size: 28px;
+        flex-direction: column;
+        margin: 10px 0;
 
-      aside {
-        flex: 6;
+        &:nth-child(2) {
+          margin: 25px 0;
+        }
       }
     }
   }

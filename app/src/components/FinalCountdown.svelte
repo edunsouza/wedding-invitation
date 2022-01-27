@@ -2,8 +2,10 @@
   import { onMount, onDestroy } from 'svelte';
   import dayjs from 'dayjs';
   import duration from 'dayjs/plugin/duration';
+
   import { EVENT_DATE } from '../utils/constants';
-  import Icon from './Icon.svelte';
+  import { doubleDigit } from '../utils/string';
+  import Leaves from '../../public/img/leaves-2.svg';
 
   dayjs.extend(duration);
 
@@ -13,9 +15,9 @@
     const diff = dayjs.duration(event.diff(now));
     return {
       days: event.diff(now, 'days'),
-      hours: diff.hours(),
-      minutes: diff.minutes(),
-      seconds: diff.seconds(),
+      hours: doubleDigit(diff.hours()),
+      minutes: doubleDigit(diff.minutes()),
+      seconds: doubleDigit(diff.seconds()),
     };
   };
 
@@ -35,35 +37,49 @@
 </script>
 
 <div>
-  <span>{days} Dias</span>
-  <Icon icon="noise_control_off" color="dark" />
-  <span>{hours} Horas</span>
-  <Icon icon="noise_control_off" color="dark" />
-  <span>{minutes} Minutos</span>
-  <Icon icon="noise_control_off" color="dark" />
-  <span>{seconds} Segundos</span>
+  <Leaves />
+  <h1>{days} Dias</h1>
+  <h2>
+    {hours}:{minutes}:{seconds}
+  </h2>
 </div>
 
 <style lang="scss">
   div {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    width: 100%;
+    flex-direction: column;
+    width: 90%;
     margin: 0 0 10px 0;
+    padding: 10px 0 10px 0;
     color: $dark;
     border: 3px solid $dark;
-    font-size: 32px;
-    z-index: 100;
+    font-size: 24px;
+    position: relative;
 
-    :global(i) {
-      font-size: 20px;
+    > :global(svg) {
+      width: 480px;
+      height: auto;
+      position: absolute;
+      transform: scaleX(1.6) scale(0.8) rotate(180deg);
+      bottom: -30px;
+      fill: #485b49;
+      fill: $primary;
     }
 
-    span {
+    h1,
+    h2 {
       display: flex;
       justify-content: center;
       color: $secondary;
+      font-size: 32px;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 22px;
+      color: $primary;
     }
   }
 </style>
