@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import preprocess from 'svelte-preprocess';
+import { svelteSVG } from 'rollup-plugin-svelte-svg';
 
 import config from './svelte.config.mjs';
 
@@ -46,7 +47,6 @@ export default {
         sourceMap: !production,
       }),
       compilerOptions: {
-        // enable run-time checks when not in production
         dev: !production
       },
       onwarn: (warning, handler) => {
@@ -54,31 +54,19 @@ export default {
         return code === 'css-unused-selector' ? undefined : handler(warning);
       },
     }),
-    // we'll extract any component CSS out into
-    // a separate file - better for performance
-    css({ output: 'bundle.css' }),
-
-    // If you have external dependencies installed from
-    // npm, you'll most likely need these plugins. In
-    // some cases you'll need additional configuration -
-    // consult the documentation for details:
-    // https://github.com/rollup/plugins/tree/master/packages/commonjs
+    css({
+      output: 'bundle.css'
+    }),
+    svelteSVG({
+      svgo: {}
+    }),
     resolve({
       browser: true,
       dedupe: ['svelte']
     }),
     commonjs(),
-
-    // In dev mode, call `npm run start` once
-    // the bundle has been generated
     !production && serve(),
-
-    // Watch the `public` directory and refresh the
-    // browser on changes when not in production
     !production && livereload('public'),
-
-    // If we're building for production (npm run build
-    // instead of npm run dev), minify
     production && terser()
   ],
   watch: {
