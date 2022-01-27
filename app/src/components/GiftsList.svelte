@@ -16,6 +16,7 @@
 </script>
 
 <div bind:this={page}>
+  <h1>Click para ser redirecionado à lista de presentes</h1>
   <a href={EVENT_GIFTS_LIST} target="_blank">Lista de Presentes</a>
 </div>
 
@@ -25,8 +26,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    color: $dark;
     a {
-      color: $dark;
+      color: $light;
+      background-color: $dark;
+      padding: 20px;
+      font-size: 22px;
+      border-radius: 10px;
     }
   }
 </style>
