@@ -13,3 +13,10 @@ export const flyTransitionOptions = {
   y: -30,
   duration: 3000,
 };
+
+export const scrollToElement = ({ target }) => {
+  target.scrollIntoView({
+    block: 'center',
+    behavior: 'smooth',
+  });
+};
