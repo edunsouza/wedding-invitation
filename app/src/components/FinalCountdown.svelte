@@ -3,7 +3,7 @@
   import dayjs from 'dayjs';
   import duration from 'dayjs/plugin/duration';
 
-  import { EVENT_DATE } from '../utils/constants';
+  import { EVENT_DATE, DAYS } from '../utils/constants';
   import { doubleDigit } from '../utils/string';
   import Leaves from '../../public/img/leaves-2.svg';
 
@@ -11,7 +11,7 @@
 
   const calculate = () => {
     const event = dayjs(EVENT_DATE);
-    const now = dayjs();
+    const now = dayjs().add(1, 'day');
     const diff = dayjs.duration(event.diff(now));
     return {
       days: event.diff(now, 'days'),
@@ -38,7 +38,7 @@
 
 <div>
   <Leaves />
-  <h1>{days} Dias</h1>
+  <h1>{days} {DAYS}</h1>
   <h2>
     {hours}:{minutes}:{seconds}
   </h2>
@@ -51,23 +51,19 @@
     align-items: center;
     flex-direction: column;
     width: 90%;
-    margin: 0 0 10px 0;
-    padding: 10px 0 10px 0;
+    margin: 20px 0px;
+    padding: 0;
     color: $dark;
-    border: 3px solid $dark;
     font-size: 24px;
     position: relative;
-
     > :global(svg) {
       width: 480px;
       height: auto;
       position: absolute;
       transform: scaleX(1.6) scale(0.8) rotate(180deg);
       bottom: -30px;
-      fill: #485b49;
       fill: $primary;
     }
-
     h1,
     h2 {
       display: flex;
@@ -76,7 +72,6 @@
       font-size: 32px;
       margin: 0;
     }
-
     h2 {
       font-size: 22px;
       color: $primary;
