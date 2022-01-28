@@ -15,7 +15,7 @@
   $: current = images[Math.abs(index % images.length)];
 </script>
 
-<div>
+<section>
   <span>
     <Icon on:click={back} color="dark" icon="favorite" />
   </span>
@@ -28,7 +28,7 @@
   <span>
     <Icon on:click={next} color="dark" icon="favorite" />
   </span>
-</div>
+</section>
 
 <style lang="scss">
   @keyframes blink {
@@ -41,24 +41,31 @@
       transform: scale(1.2);
     }
   }
-
-  span :global(i) {
-    animation: blink 0.7s 1s infinite alternate both ease-out;
-    font-size: 50px;
-  }
-
-  div {
+  section {
     height: 100%;
     display: flex;
     position: relative;
-
+    overflow: hidden;
+    span :global(i) {
+      animation: blink 0.7s 1s infinite alternate both ease-out;
+      font-size: 50px;
+      @media (max-width: $sm) {
+        font-size: 32px;
+      }
+    }
     img {
-      min-width: 100%;
-      max-width: 100%;
+      width: 100%;
       object-fit: cover;
       object-position: 50% 60%;
-    }
 
+      @media (max-width: $sm) {
+        height: 110vh;
+        width: 100vw;
+        object-fit: cover;
+        object-position: 50% 50%;
+        margin-top: -230px;
+      }
+    }
     span {
       position: absolute;
       top: calc(50% - 40px);

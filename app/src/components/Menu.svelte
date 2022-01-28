@@ -46,10 +46,22 @@
       flex: 1;
       cursor: pointer;
       user-select: none;
-      font-size: 32px;
       border-top: 2px solid $dark;
+      @media (max-width: $sm) {
+        border-width: 1px;
+      }
+
+      > :global(h2) {
+        @media (max-width: $sm) {
+          display: none;
+        }
+      }
+
       :global(i) {
         font-size: 42px;
+        @media (max-width: $sm) {
+          margin-top: 15px;
+        }
       }
       &:hover {
         border-bottom-color: $secondary;

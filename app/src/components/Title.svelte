@@ -12,5 +12,8 @@
     color: $dark;
     font-size: 72px;
     font-family: 'LobsterTwo', Roboto, sans-serif;
+    @media (max-width: $sm) {
+      font-size: 44px;
+    }
   }
 </style>

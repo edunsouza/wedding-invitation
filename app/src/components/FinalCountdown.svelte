@@ -36,16 +36,16 @@
   });
 </script>
 
-<div>
+<section>
   <Leaves />
   <h1>{days} {DAYS}</h1>
   <h2>
     {hours}:{minutes}:{seconds}
   </h2>
-</div>
+</section>
 
 <style lang="scss">
-  div {
+  section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,6 +56,12 @@
     color: $dark;
     font-size: 24px;
     position: relative;
+
+    @media (max-width: $sm) {
+      margin: 0;
+      font-size: 18px;
+    }
+
     > :global(svg) {
       width: 480px;
       height: auto;
@@ -63,6 +69,11 @@
       transform: scaleX(1.6) scale(0.8) rotate(180deg);
       bottom: -30px;
       fill: $primary;
+
+      @media (max-width: $sm) {
+        max-width: 240px;
+        bottom: -5px;
+      }
     }
     h1,
     h2 {
@@ -71,10 +82,17 @@
       color: $secondary;
       font-size: 32px;
       margin: 0;
+
+      @media (max-width: $sm) {
+        font-size: 20px;
+      }
     }
     h2 {
       font-size: 22px;
       color: $primary;
+      @media (max-width: $sm) {
+        font-size: 14px;
+      }
     }
   }
 </style>

@@ -11,8 +11,6 @@
 {/if}
 
 <style lang="scss">
-  @import '../styles/variables';
-
   h1,
   h2 {
     color: $dark;
@@ -20,8 +18,14 @@
     padding: 0;
     text-align: center;
     font-size: 24px;
+    @media (max-width: $sm) {
+      font-size: 14px;
+    }
   }
   h2 {
     font-size: 18px;
+    @media (max-width: $sm) {
+      font-size: 12px;
+    }
   }
 </style>

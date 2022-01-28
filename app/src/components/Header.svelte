@@ -24,6 +24,10 @@
     position: relative;
     height: 420px;
     width: 100%;
+
+    @media (max-width: $sm) {
+      height: 350px;
+    }
     nav,
     aside {
       height: 100%;

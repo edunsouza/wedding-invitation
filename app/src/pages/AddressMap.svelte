@@ -28,8 +28,6 @@
 </section>
 
 <style lang="scss">
-  @import '../styles/variables';
-
   section {
     height: 70vh;
     width: 90%;

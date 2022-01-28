@@ -9,8 +9,6 @@
 </i>
 
 <style lang="scss">
-  @import '../styles/variables';
-
   i {
     user-select: none;
     cursor: pointer;

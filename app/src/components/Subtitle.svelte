@@ -11,12 +11,13 @@
 {/if}
 
 <style lang="scss">
-  @import '../styles/variables';
-
   h2 {
     margin: 0;
     color: $primary;
     font-size: 42px;
     font-family: 'AmaticSC';
+    @media (max-width: $sm) {
+      font-size: 32px;
+    }
   }
 </style>

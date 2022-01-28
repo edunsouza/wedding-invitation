@@ -7,8 +7,6 @@
 </a>
 
 <style lang="scss">
-  @import '../styles/variables';
-
   a {
     color: $light;
     background-color: $dark;
