@@ -23,9 +23,7 @@
 <article>
   {#each items as item, i}
     {#if index === i && selected}
-      <div>
-        <svelte:component this={item.component} value={item.label} />
-      </div>
+      <svelte:component this={item.component} value={item.label} />
     {/if}
   {/each}
 </article>
@@ -36,7 +34,6 @@
     align-items: center;
     justify-content: center;
   }
-
   nav {
     display: flex;
     justify-content: space-evenly;
@@ -45,25 +42,20 @@
     padding: 0;
     list-style-type: none;
     color: $dark;
-
     span {
       flex: 1;
       cursor: pointer;
       user-select: none;
       font-size: 32px;
       border-top: 2px solid $dark;
-
       :global(i) {
         font-size: 42px;
       }
-
       &:hover {
         border-bottom-color: $secondary;
-
         :global(h2) {
           color: $secondary;
         }
-
         :global(i) {
           color: $secondary;
         }

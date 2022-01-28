@@ -12,11 +12,7 @@
 <header>
   <nav>
     <Title value={EVENT_OWNERS} transition={typewriter} />
-    <Subtitle
-      value={EVENT_DATE_STRING}
-      transition={fly}
-      transitionOptions={flyTransitionOptions}
-    />
+    <Subtitle value={EVENT_DATE_STRING} transition={fly} transitionOptions={flyTransitionOptions} />
   </nav>
   <aside>
     <Carousel />
@@ -26,21 +22,18 @@
 <style lang="scss">
   header {
     position: relative;
-    height: 450px;
+    height: 420px;
     width: 100%;
-
     nav,
     aside {
       height: 100%;
     }
-
     nav {
       width: 100%;
       text-align: center;
       position: absolute;
       z-index: 2;
     }
-
     aside {
       margin: 0;
       padding: 0;

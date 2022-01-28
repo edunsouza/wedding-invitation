@@ -15,19 +15,15 @@
     user-select: none;
     cursor: pointer;
   }
-
   .primary {
     color: $primary;
   }
-
   .secondary {
     color: $secondary;
   }
-
   .dark {
     color: $dark;
   }
-
   .light {
     color: $light;
   }
