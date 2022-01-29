@@ -11,7 +11,7 @@ export const EVENT_PLACE_WEBSITE = 'http://www.alamedafigueira.com.br/';
 export const EVENT_MAP_EXPANDED = 'https://www.google.com/maps/dir/-29.9219871,-51.1081528/-29.923334,-51.114159/@-29.9224039,-51.1140759,619m/data=!3m1!1e3!5m2!1e3!1e4';
 export const EVENT_MAP_EMBED = isProd
     ? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3552.5819101876036!2d-51.114620887706046!3d-29.921139324038403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x818ee13e88335be9!2zMjnCsDU1JzE2LjEiUyA1McKwMDYnNDguMSJX!5e1!3m2!1spt-BR!2sbr!4v1641000741148!5m2!1spt-BR!2sbr'
-    : `${window.location.href}/img/cover-1.jpg`;
+    : `${window.location.href}/img/cover-2-lg.jpg`;
 
 export const DAYS = 'Dias';
 

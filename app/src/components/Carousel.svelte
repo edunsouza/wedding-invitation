@@ -1,18 +1,23 @@
 <script>
   import { fly } from 'svelte/transition';
+  import { isMobile } from '../utils/device';
 
   import Icon from './Icon.svelte';
 
-  const images = [
-    { src: 'img/cover-1.jpg', alt: 'noivos-1' },
-    { src: 'img/cover-2.jpg', alt: 'noivos-2' },
-    { src: 'img/cover-3.jpg', alt: 'noivos-3' },
-  ];
+  const carouselLength = 4;
   let index = 0;
+  let current = {};
   const next = () => index++;
   const back = () => index--;
 
-  $: current = images[Math.abs(index % images.length)];
+  $: {
+    const i = 1 + Math.abs(index % carouselLength);
+    const size = isMobile() ? 'sm' : 'lg';
+    current = {
+      src: `img/cover-${i}-${size}.jpg`,
+      alt: `cover-${i}`,
+    };
+  }
 </script>
 
 <section>
@@ -57,14 +62,6 @@
       width: 100%;
       object-fit: cover;
       object-position: 50% 60%;
-
-      @media (max-width: $sm) {
-        height: 110vh;
-        width: 100vw;
-        object-fit: cover;
-        object-position: 50% 50%;
-        margin-top: -230px;
-      }
     }
     span {
       position: absolute;
