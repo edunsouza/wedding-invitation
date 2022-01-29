@@ -3,7 +3,12 @@ import App from './App.svelte';
 let app;
 
 try {
-  app = new App({ target: document.body });
+  document.body.innerHTML = `
+    <center>
+      <pre>CAMILA - ${new Date()}</pre>
+    </center>
+  `;
+  // app = new App({ target: document.body });
 } catch (error) {
   document.body.innerHTML = `
     <center>
