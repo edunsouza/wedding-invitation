@@ -4,15 +4,13 @@
 
   import Home from './pages/Home.svelte';
   import Invite from './pages/Invite.svelte';
-  import NotFound from './pages/NotFound.svelte';
 
   smoothscroll.polyfill();
 </script>
 
 <Router>
-  <Route path="/" component={Home} />
   <Route path=":guest" component={Invite} />
-  <Route component={NotFound} />
+  <Route path="*" component={Home} />
 </Router>
 
 <style lang="scss">

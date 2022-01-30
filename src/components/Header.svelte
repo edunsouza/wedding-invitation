@@ -12,7 +12,11 @@
 <header>
   <nav>
     <Title value={EVENT_OWNERS} transition={typewriter} />
-    <Subtitle value={EVENT_DATE_STRING} transition={fly} transitionOptions={flyTransitionOptions} />
+    <Subtitle
+      value={EVENT_DATE_STRING}
+      transition={fly}
+      transitionOptions={flyTransitionOptions}
+    />
   </nav>
   <aside>
     <Carousel />

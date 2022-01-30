@@ -1,5 +1,6 @@
 <script>
   import { fly } from 'svelte/transition';
+  import { root } from '../utils/env';
   import { isMobile } from '../utils/device';
 
   import Icon from './Icon.svelte';
@@ -9,12 +10,13 @@
   let current = {};
   const next = () => index++;
   const back = () => index--;
+  const getImagesRoot = (img) => `${root}/img/${img}`;
 
   $: {
     const i = 1 + Math.abs(index % carouselLength);
     const size = isMobile() ? 'sm' : 'lg';
     current = {
-      src: `img/cover-${i}-${size}.jpg`,
+      src: `cover-${i}-${size}.jpg`,
       alt: `cover-${i}`,
     };
   }
@@ -27,7 +29,7 @@
   <img
     transition:fly={{ duration: 2000 }}
     on:readystatechange={() => console.log(12)}
-    src={current.src}
+    src={getImagesRoot(current.src)}
     alt={current.alt}
   />
   <span>
