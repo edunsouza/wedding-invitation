@@ -5,12 +5,12 @@
   import AddressMap from './AddressMap.svelte';
   import GiftsList from './GiftsList.svelte';
   import Title from '../components/Title.svelte';
-  import { MENU_GIFTS, MENU_ATTENDANCE, MENU_MAP } from '../utils/constants';
+  import { PAGES } from '../utils/constants';
 
   const menus = [
-    { label: MENU_GIFTS, icon: 'card_giftcard', component: GiftsList },
-    { label: MENU_ATTENDANCE, icon: 'verified', component: Title },
-    { label: MENU_MAP, icon: 'place', component: AddressMap },
+    { label: PAGES.GIFTS.MENU, icon: 'card_giftcard', component: GiftsList },
+    { label: PAGES.ATTENDANCE.MENU, icon: 'verified', component: Title },
+    { label: PAGES.MAP.MENU, icon: 'place', component: AddressMap },
   ];
 </script>
 

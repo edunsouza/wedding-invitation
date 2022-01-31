@@ -2,7 +2,7 @@
   import { fly } from 'svelte/transition';
 
   import { typewriter, flyTransitionOptions } from '../utils/animations';
-  import { EVENT_OWNERS, EVENT_DATE_STRING } from '../utils/constants';
+  import { EVENT } from '../utils/constants';
 
   import Carousel from '../components/Carousel.svelte';
   import Title from './Title.svelte';
@@ -11,9 +11,9 @@
 
 <header>
   <nav>
-    <Title value={EVENT_OWNERS} transition={typewriter} />
+    <Title value={EVENT.OWNERS} transition={typewriter} />
     <Subtitle
-      value={EVENT_DATE_STRING}
+      value={EVENT.DATE_STRING}
       transition={fly}
       transitionOptions={flyTransitionOptions}
     />

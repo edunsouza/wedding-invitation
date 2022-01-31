@@ -1,11 +1,14 @@
 <script>
   const primary = 'primary';
   const secondary = 'secondary';
+  const body = 'body';
   export let type = primary;
 </script>
 
 {#if type === secondary}
   <h2><slot /></h2>
+{:else if type === body}
+  <p><slot /></p>
 {:else}
   <h1><slot /></h1>
 {/if}
@@ -27,5 +30,11 @@
     @media (max-width: $sm) {
       font-size: 12px;
     }
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    color: $dark;
+    font-size: 14px;
   }
 </style>

@@ -1,14 +1,14 @@
 <script>
-  import { EVENT_ADDRESS, EVENT_DATE_STRING, EVENT_START } from '../utils/constants';
-  import Leaf from '../../public/img/leaf-2.svg';
+  import { EVENT } from '../utils/constants';
+  import Leaf from '../../public/img/leaf.svg';
   import Label from './Label.svelte';
 </script>
 
 <section>
   <Leaf />
   <article>
-    <Label>{EVENT_DATE_STRING} às {EVENT_START}</Label>
-    <Label type="secondary">{EVENT_ADDRESS}</Label>
+    <Label>{EVENT.DATE_STRING} às {EVENT.START}</Label>
+    <Label type="secondary">{EVENT.ADDRESS}</Label>
   </article>
   <Leaf />
 </section>

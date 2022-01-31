@@ -3,14 +3,14 @@
   import dayjs from 'dayjs';
   import duration from 'dayjs/plugin/duration';
 
-  import { EVENT_DATE, DAYS } from '../utils/constants';
+  import { EVENT, DAYS } from '../utils/constants';
   import { doubleDigit } from '../utils/string';
-  import Leaves from '../../public/img/leaves-2.svg';
+  import Leaves from '../../public/img/leaves.svg';
 
   dayjs.extend(duration);
 
   const calculate = () => {
-    const event = dayjs(EVENT_DATE);
+    const event = dayjs(EVENT.DATE);
     const now = dayjs().add(1, 'day');
     const diff = dayjs.duration(event.diff(now));
     return {

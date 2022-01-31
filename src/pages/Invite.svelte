@@ -1,31 +1,136 @@
 <script>
   import { capitalize } from '../utils/string';
+  import { INVITE } from '../utils/constants';
+  import Title from './../components/Title.svelte';
+  import Label from './../components/Label.svelte';
+  import Circle from '../../public/img/wreath.svg';
 
-  export let guest;
+  const {
+    TITLE,
+    TEXT: TEXT_RAW,
+    PLACEHOLDER,
+    INSTRUCTIONS_TITLE,
+    INSTRUCTIONS,
+    MESSAGE,
+    GREETINGS,
+  } = INVITE;
 
-  const names = (guest || '').split('-').map(capitalize).join(' & ');
+  export let guest = '';
+  const names = guest.split('-');
+  const folks = names
+    .map(capitalize)
+    .join(', ')
+    .replace(/,(?=[^,]*$)/, ' & ');
+  const pronoun = names.length > 1 ? 'vocês' : 'você';
+  const guests = `${pronoun}, ${folks},`;
+  const TEXT = TEXT_RAW.replace(PLACEHOLDER, guests);
 </script>
 
 <section>
-  <h1>Os noivos <i>Eduardo e Camila</i> convidam</h1>
-  <h2>{names}</h2>
-  <h1>para o seu casamento!</h1>
+  <aside />
+  <Circle />
+  <article>
+    <Title value={TITLE} />
+    <Label type="body">{TEXT}</Label>
+    <Title value={INSTRUCTIONS_TITLE} />
+    <ul>
+      {#each INSTRUCTIONS as instruction}
+        <li>
+          <Label type="body">{instruction}</Label>
+        </li>
+      {/each}
+    </ul>
+    <Label type="body">{MESSAGE}</Label>
+    <Title value={GREETINGS} />
+  </article>
 </section>
 
-<style>
+<style lang="scss">
+  @keyframes rotate {
+    100% {
+      transform: scaleX(1.6) scaleY(1.2) rotate(450deg);
+    }
+  }
   section {
+    background-image: url('../img/invite.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
-    color: #7c5b4f;
-  }
-  h2 {
-    transform: skew(-20deg);
-    background: #68473b;
-    color: #e3e2dc;
-    padding: 0 20px;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    article {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      margin-left: 40px;
+      :global(h1),
+      :global(p),
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        margin-bottom: 60px;
+        text-align: left;
+        color: $light;
+      }
+      :global(h1) {
+        width: 80%;
+        margin: 30px 0 20px 0;
+        font-size: 48px;
+        color: $secondary;
+        text-shadow: 2px 3px 1px $dark;
+
+        &:first-child {
+          margin-top: 0px;
+        }
+        &:last-child {
+          margin-top: 5px;
+        }
+      }
+      :global(p) {
+        width: 55%;
+        font-size: 26px;
+        line-height: 22px;
+        color: $light;
+        text-shadow: 1px 2px 1px $dark;
+      }
+      li > :global(p) {
+        width: 100%;
+        line-height: 28px;
+      }
+    }
+    :global(svg) {
+      width: 900px;
+      height: 900px;
+      position: absolute;
+      top: calc(50% - 450px);
+      left: calc(50% - 450px);
+      transform: scaleX(1.6) scaleY(1.2) rotate(90deg);
+      fill: $primary;
+      filter: drop-shadow(1px -2px 4px $sunray);
+      animation: rotate 100s linear infinite;
+    }
+    aside {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 950px;
+      height: 750px;
+      backdrop-filter: blur(5px);
+      border-radius: 50%;
+    }
   }
 </style>
