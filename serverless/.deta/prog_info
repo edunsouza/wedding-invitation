@@ -1,0 +1,1 @@
+{"id":"778f1b31-936d-4dda-bf4e-fae08de90a61","space":1397,"runtime":"nodejs14.x","name":"wedding-1","path":"6z5d3f","project":"b0rxvsjx","account":"144798365827","region":"us-west-1","deps":["express@^4.17.2","body-parser@^1.19.1"],"envs":["DB_NAME"],"public":true,"log_level":"debug","cron":""}

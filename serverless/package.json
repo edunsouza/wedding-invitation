@@ -1,0 +1,15 @@
+{
+  "name": "wedding-1",
+  "version": "1.0.0",
+  "description": "deta micro for wedding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduardo Nascimento",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2"
+  }
+}
