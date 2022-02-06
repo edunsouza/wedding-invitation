@@ -6,6 +6,12 @@ const { version } = require('./package.json');
 
 const app = express();
 app.use(bodyParser.json());
+app.use((_, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  next();
+});
 
 app.get('*', (request, response) => response.json({
   'Wedding API': version

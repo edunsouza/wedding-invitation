@@ -4,12 +4,12 @@
   import Menu from '../components/Menu.svelte';
   import AddressMap from './AddressMap.svelte';
   import GiftsList from './GiftsList.svelte';
-  import Title from '../components/Title.svelte';
+  import Attendance from './Attendance.svelte';
   import { PAGES } from '../utils/constants';
 
   const menus = [
     { label: PAGES.GIFTS.MENU, icon: 'card_giftcard', component: GiftsList },
-    { label: PAGES.ATTENDANCE.MENU, icon: 'verified', component: Title },
+    { label: PAGES.ATTENDANCE.MENU, icon: 'verified', component: Attendance },
     { label: PAGES.MAP.MENU, icon: 'place', component: AddressMap },
   ];
 </script>

@@ -21,6 +21,13 @@ export const PAGES = {
   },
   ATTENDANCE: {
     MENU: 'Confirmar Presença',
+    TITLE: 'Informe seu nome',
+    CONFIRM: 'Confirmar presença',
+    SUCCESS: 'Obrigado por nos manter informados!',
+    INFORM_NAME: 'É necessário informar seu nome',
+    ATTENDING: 'Eu vou comparecer :D',
+    NOT_ATTENDING: 'Eu NÃO vou comparecer :(',
+    ERROR: 'Não foi possível confirmar sua presença. Por favor, contate os noivos',
   },
   MAP: {
     MENU: 'Mapa',

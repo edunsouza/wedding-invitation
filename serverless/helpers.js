@@ -18,7 +18,7 @@ const validateSchema = (data, schema) => {
     number: (value) => typeof value === 'number',
   };
 
-  const missingKeys = Object.keys(schema).filter(k => !data[k]);
+  const missingKeys = Object.keys(schema).filter(k => data[k] === undefined);
   if (missingKeys.length) {
     return getInvalidResponse(`missing fields [${missingKeys.join(', ')}]`);
   }
