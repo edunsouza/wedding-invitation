@@ -1,35 +1,47 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { getDatabase, validateSchema } = require('./helpers');
 const { version } = require('./package.json');
+const { cors, responseHandler, validateToken } = require('./middlewares');
+const { loadEnv, isLocal, md5, } = require('./utils');
+const { getAttendanceDb, getTokensDb, createToken, } = require('./helpers');
+const schemas = require('./schemas');
 
 const app = express();
 app.use(bodyParser.json());
-app.use((_, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', '*');
-  next();
+app.use(cors);
+app.use(responseHandler);
+
+app.post('/token', schemas.tokens, async (req, res) => {
+  try {
+    const { clientId, secret } = req.body;
+
+    const db = getTokensDb(secret);
+    const client = await db.get(clientId);
+
+    if (!client?.secret || client.secret !== md5(secret)) {
+      return res.userError('invalid credentials');
+    }
+
+    const jwt = createToken({ scope: 'attendance' });
+
+    if (jwt.error) {
+      throw jwt.error;
+    }
+
+    const { token, expiresIn } = jwt;
+    await db.update({ expiresIn }, clientId);
+
+    res.success({ token, expiresIn });
+  } catch (error) {
+    res.internalError(error);
+  }
 });
 
-app.get('*', (request, response) => response.json({
-  'Wedding API': version
-}));
-
-app.put('/confirm-attendance', async (request, response) => {
-  const payload = validateSchema(request.body, {
-    attendee: 'string',
-    attending: 'boolean'
-  });
-
-  if (!payload.valid) {
-    return response.status(400).json(payload);
-  }
-
+app.put('/confirm-attendance', schemas.confirmAttendance, async (req, res) => {
   try {
-    const { attendee, attending } = request.body;
-    const db = getDatabase();
+    const { attendee, attending } = req.body;
+    const db = getAttendanceDb();
     const existing = await db.get(attendee);
     const updateAt = new Date().toISOString();
     const createdAt = existing?.createdAt
@@ -42,16 +54,34 @@ app.put('/confirm-attendance', async (request, response) => {
       updateAt
     }, attendee);
 
-    return response
-      .status(200)
-      .json({ confirmed: true });
+    return res.success({
+      attendee,
+      attending,
+      confirmed: true,
+    });
   } catch (error) {
-    console.error(error);
-
-    return response
-      .status(500)
-      .json({ error });
+    res.internalError(error);
   }
 });
+
+app.get('/attendees', validateToken, async (_req, res) => {
+  try {
+    const db = getAttendanceDb();
+    const attendees = await db.fetch();
+    res.success(attendees);
+  } catch (error) {
+    res.internalError(error);
+  }
+});
+
+app.get('*', (_req, res) => res.success({
+  'Wedding API': version,
+}));
+
+if (isLocal()) {
+  const port = 1234;
+  app.listen(port, () => console.log(`==== server listening to port ${port} ====`));
+  loadEnv();
+}
 
 module.exports = app;

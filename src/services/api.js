@@ -1,6 +1,4 @@
 class API {
-  apiRoot = '';
-
   constructor(root) {
     this.apiRoot = root;
   }
@@ -16,6 +14,14 @@ class API {
 
   async put(path, body, headers) {
     return await this.fetch(path, 'PUT', headers, body);
+  }
+
+  async post(path, body, headers) {
+    return await this.fetch(path, 'POST', headers, body);
+  }
+
+  async get(path, headers) {
+    return await this.fetch(path, 'GET', headers);
   }
 }
 

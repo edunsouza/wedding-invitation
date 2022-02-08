@@ -28,7 +28,6 @@
   </span>
   <img
     transition:fly={{ duration: 2000 }}
-    on:readystatechange={() => console.log(12)}
     src={toImageUrl(current.src)}
     alt={current.alt}
   />

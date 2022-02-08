@@ -4,12 +4,19 @@
   "description": "deta micro for wedding",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "local": "NODE_ENV=local npx nodemon index.js",
+    "test": "jest ./**.test.js"
   },
   "author": "Eduardo Nascimento",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.1",
-    "express": "^4.17.2"
+    "deta": "^1.0.1",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "jest": "^27.5.0",
+    "node-fetch": "^2.6.7"
   }
 }

@@ -1,8 +1,49 @@
 const { Deta } = require('deta');
+const jwt = require('jsonwebtoken');
 
-const getDatabase = () => {
-  const instance = Deta();
-  return instance.Base(process.env.DB_NAME);
+const { isLocal, md5 } = require('./utils');
+
+const mockedDatabase = {
+  fetch: async () => [{ key: 'person', attending: true }],
+  update: async () => true,
+  put: async () => ({ success: true }),
+  get: async key => ({
+    dev_key: {
+      key: 'dev_key',
+      secret: md5('dev_password'),
+    },
+  })[key],
+};
+
+const getDatabase = name => isLocal() ? mockedDatabase : Deta().Base(name);
+
+const getAttendanceDb = () => getDatabase(process.env.ATTENDANCE_DB);
+
+const getTokensDb = () => getDatabase(process.env.TOKENS_DB);
+
+const createToken = payload => {
+  try {
+    const lifeSpan = 60 * 60 * 24 * 70;
+    const iat = Date.now();
+    const exp = iat / 1000 + lifeSpan;
+    const data = { ...payload, exp };
+    const token = jwt.sign(data, process.env.CERT);
+    return {
+      token,
+      iat,
+      expiresIn: exp * 1000,
+    };
+  } catch (error) {
+    return { error };
+  }
+};
+
+const decodeToken = token => {
+  try {
+    return jwt.verify(token, process.env.CERT);
+  } catch (error) {
+    return { error };
+  }
 };
 
 const validateSchema = (data, schema) => {
@@ -37,6 +78,9 @@ const validateSchema = (data, schema) => {
 };
 
 module.exports = {
-  getDatabase,
+  getAttendanceDb,
+  getTokensDb,
+  createToken,
+  decodeToken,
   validateSchema,
 };
