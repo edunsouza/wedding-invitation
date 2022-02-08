@@ -22,7 +22,7 @@ const responseHandler = (_request, response, next) => {
 };
 
 const validateToken = (request, response, next) => {
-  const [_type, token] = request.get('authorization')?.split(/\s/);
+  const [_type, token] = request.get('authorization')?.split(/\s/) || [];
   const jwt = decodeToken(token);
   if (jwt.error) {
     response.userError('invalid access token');
