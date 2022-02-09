@@ -12,7 +12,7 @@ export const EVENT = {
 
 export const DAYS = 'Dias';
 
-export const PAGES = {
+export const HOME = {
   GIFTS: {
     MENU: 'Lista de Presentes',
     TITLE: 'Clique para ser redirecionado à lista de presentes',
@@ -38,7 +38,7 @@ export const PAGES = {
       ? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3552.5819101876036!2d-51.114620887706046!3d-29.921139324038403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x818ee13e88335be9!2zMjnCsDU1JzE2LjEiUyA1McKwMDYnNDguMSJX!5e1!3m2!1spt-BR!2sbr!4v1641000741148!5m2!1spt-BR!2sbr'
       : `${imagesRoot}/cover-2-sm.jpg`,
   },
-}
+};
 
 export const INVITE = {
   TITLE: 'Felicidade só é real quando compartilhada.',
@@ -53,4 +53,8 @@ export const INVITE = {
   ],
   MESSAGE: 'Tudo foi feito com muito carinho para comemorarmos juntos essa data tão importante. Aproveite cada instante!',
   GREETINGS: 'Aguardamos você!',
+};
+
+export const GUESTS_LIST = {
+  // TODO
 };

@@ -1,10 +1,10 @@
 <script>
-  import { EVENT, PAGES } from '../utils/constants';
+  import { EVENT, HOME } from '../utils/constants';
   import { scrollToElement } from '../utils/animations';
   import Label from '../components/Label.svelte';
   import Link from '../components/Link.svelte';
 
-  const { TITLE, REDIRECT_LABEL, EMBED_URL, EXPANDED_URL } = PAGES.MAP;
+  const { TITLE, REDIRECT_LABEL, EMBED_URL, EXPANDED_URL } = HOME.MAP;
 </script>
 
 <section>

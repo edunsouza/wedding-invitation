@@ -5,12 +5,12 @@
   import AddressMap from './AddressMap.svelte';
   import GiftsList from './GiftsList.svelte';
   import Attendance from './Attendance.svelte';
-  import { PAGES } from '../utils/constants';
+  import { HOME } from '../utils/constants';
 
   const menus = [
-    { label: PAGES.GIFTS.MENU, icon: 'card_giftcard', component: GiftsList },
-    { label: PAGES.ATTENDANCE.MENU, icon: 'verified', component: Attendance },
-    { label: PAGES.MAP.MENU, icon: 'place', component: AddressMap },
+    { label: HOME.GIFTS.MENU, icon: 'card_giftcard', component: GiftsList },
+    { label: HOME.ATTENDANCE.MENU, icon: 'verified', component: Attendance },
+    { label: HOME.MAP.MENU, icon: 'place', component: AddressMap },
   ];
 </script>
 

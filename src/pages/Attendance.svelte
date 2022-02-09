@@ -1,5 +1,5 @@
 <script>
-  import { PAGES } from '../utils/constants';
+  import { HOME } from '../utils/constants';
   import { confirm } from '../services/attendance';
   import { scrollToElement } from '../utils/animations';
   import Label from '../components/Label.svelte';
@@ -13,7 +13,7 @@
     INFORM_NAME,
     ATTENDING,
     NOT_ATTENDING,
-  } = PAGES.ATTENDANCE;
+  } = HOME.ATTENDANCE;
 
   let attendee = null;
   let attending = true;
