@@ -9,6 +9,6 @@ export const list = async ({ token }) => {
   return await API.get('attendees', headers);
 };
 
-export const access = async ({ password }) => {
-  return await API.post('token', { password });
+export const access = async (clientId, secret) => {
+  return await API.post('token', { clientId, secret });
 };

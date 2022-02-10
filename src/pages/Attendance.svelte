@@ -2,7 +2,9 @@
   import { HOME } from '../utils/constants';
   import { confirm } from '../services/attendance';
   import { scrollToElement } from '../utils/animations';
+  import Input from '../components/TextInput.svelte';
   import Label from '../components/Label.svelte';
+  import Button from '../components/Button.svelte';
   import Icon from '../components/Icon.svelte';
 
   const {
@@ -22,9 +24,8 @@
   let checkboxColor = 'primary';
 
   const onToggle = () => (attending = !attending);
-  const onType = (event) => {
-    event.preventDefault();
-    attendee = event.target.value.toLowerCase().replace(/[\s,.]+/gi, '-');
+  const onType = (text) => {
+    attendee = text.toLowerCase().replace(/[\s,.]+/gi, '-');
   };
   const onConfirm = async () => {
     if (!attendee) {
@@ -53,13 +54,13 @@
 
 <section>
   <Label>{TITLE}</Label>
-  <input type="text" on:input={onType} bind:value={attendee} />
-  <span>
+  <Input onInput={onType} bind:value={attendee} />
+  <span bind:this={scrollTarget}>
     <Icon on:click={onToggle} icon={checkboxIcon} color={checkboxColor} />
     <input id="attending" type="checkbox" bind:checked={attending} />
     <label for="attending">{attending ? ATTENDING : NOT_ATTENDING}</label>
   </span>
-  <button bind:this={scrollTarget} on:click={onConfirm}>{CONFIRM}</button>
+  <Button onClick={onConfirm} text={CONFIRM} />
 </section>
 
 <style lang="scss">
@@ -69,16 +70,6 @@
     align-items: center;
     flex-direction: column;
     height: 85vh;
-
-    input[type='text'] {
-      font-size: 26px;
-      padding: 10px;
-      border: 2px solid $dark;
-      border-radius: 10px;
-      color: $primary;
-      text-align: center;
-      background: $light;
-    }
 
     span {
       display: flex;
@@ -96,19 +87,6 @@
         margin-left: 15px;
         user-select: none;
         cursor: pointer;
-      }
-    }
-
-    button {
-      color: $light;
-      cursor: pointer;
-      background-color: $primary;
-      padding: 20px;
-      font-size: 22px;
-      border-radius: 10px;
-
-      &:active {
-        background-color: darken($color: $primary, $amount: 10);
       }
     }
   }

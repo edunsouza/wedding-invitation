@@ -56,5 +56,12 @@ export const INVITE = {
 };
 
 export const GUESTS_LIST = {
-  // TODO
+  TITLE: 'Lista de Convidados',
+  NAME: 'Convidado(s)',
+  STATUS: 'Comparecerá',
+  LOADING: 'Carregando...',
+  YES: 'Sim',
+  NO: 'Não',
+  PASSWORD: 'Informe sua senha',
+  CONFIRM: 'Acessar',
 };
