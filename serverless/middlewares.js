@@ -1,8 +1,9 @@
 const { decodeToken } = require('./helpers');
 
 const cors = (_request, response, next) => {
+  console.log(_request.method, _request.url);
   response.setHeader('Access-Control-Allow-Origin', '*');
-  response.setHeader('Access-Control-Allow-Headers', '*');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, *');
   response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   next();
 };

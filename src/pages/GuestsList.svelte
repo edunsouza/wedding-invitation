@@ -140,8 +140,24 @@
 
     table {
       width: 80%;
-      tr:nth-child(2n) {
-        background-color: darken($color: $light, $amount: 10);
+      display: flex;
+      flex-direction: column;
+      tr {
+        display: flex;
+        &:nth-child(2n) {
+          background-color: darken($color: $light, $amount: 10);
+        }
+        td,
+        th {
+          flex: 2;
+          &:last-child {
+            flex: 1;
+          }
+
+          :global(*) {
+            text-align: left;
+          }
+        }
       }
     }
   }
