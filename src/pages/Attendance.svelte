@@ -1,7 +1,8 @@
 <script>
   import { HOME } from '../utils/constants';
-  import { confirm } from '../services/attendance';
   import { scrollToElement } from '../utils/animations';
+  import { dashify } from '../utils/string';
+  import { confirm } from '../services/attendance';
   import Input from '../components/TextInput.svelte';
   import Label from '../components/Label.svelte';
   import Button from '../components/Button.svelte';
@@ -25,7 +26,7 @@
 
   const onToggle = () => (attending = !attending);
   const onType = (text) => {
-    attendee = text.toLowerCase().replace(/[\s,.]+/gi, '-');
+    attendee = text.replace(/[\s,.]+/gi, ' ');
   };
   const onConfirm = async () => {
     if (!attendee) {
@@ -34,7 +35,10 @@
     }
 
     try {
-      const { error } = await confirm({ attendee, attending });
+      const { error } = await confirm({
+        attendee: dashify(attendee),
+        attending,
+      });
       if (error) {
         throw error;
       }

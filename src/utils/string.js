@@ -4,4 +4,10 @@ export const capitalize = text => {
     .replace(/^./, char => char.toUpperCase());
 };
 
+export const dashify = text => {
+  return String(text || '')
+    .toLowerCase()
+    .replace(/[\s,.]+/gi, '-');
+}
+
 export const doubleDigit = (number) => String(number).padStart(2, '0');

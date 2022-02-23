@@ -47,7 +47,7 @@
       list = items.map((i) => ({
         ...i,
         attending: i.attending ? YES : NO,
-        attendee: i.key.replace('-', ' '),
+        attendee: i.key.replace(/-/gi, ' '),
       }));
     } catch (e) {
       setError(e);
