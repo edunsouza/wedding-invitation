@@ -46,7 +46,7 @@ export const INVITE = {
   PLACEHOLDER: '{{guests}}',
   INSTRUCTIONS_TITLE: 'Por favor, siga estas instruções:',
   INSTRUCTIONS: [
-    'Confirme sua presença até 15/03/2022',
+    'Confirme sua presença até 31/03/2022',
     'Tire muitas fotos no dia',
     'Use #CasamentoCaDu quando postar',
     'Se prepare para dançar',
