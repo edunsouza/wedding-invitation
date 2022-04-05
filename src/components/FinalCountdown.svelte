@@ -11,7 +11,7 @@
 
   const calculate = () => {
     const event = dayjs(EVENT.DATE);
-    const now = dayjs().add(1, 'day');
+    const now = dayjs();
     const diff = dayjs.duration(event.diff(now));
     return {
       days: event.diff(now, 'days'),
